@@ -11,13 +11,50 @@ header {
   background: linear-gradient(90deg, #15216d, #1a2a9c);
   color: white;
   padding: 1rem 2rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
-  justify-content: space-between; /* desktop: logo left, filtro right */
+  justify-content: space-around;
   font-size: 1.75rem;
   user-select: none;
-  flex-wrap: wrap; /* permite que quebre linha no mobile */
+  flex-wrap: wrap;
+  transition: opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease;
+  overflow: hidden;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+header.hide {
+  opacity: 0;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  pointer-events: none;
+}
+
+.floating-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: #5d6598;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(21, 33, 109, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+.floating-btn:hover {
+  background-color: #1a2a9c;
+  transform: scale(1.1);
 }
 
 header .logo {
@@ -28,26 +65,26 @@ header .logo {
   padding: 0.3rem 1rem;
   background: rgba(255 255 255 / 0.1);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
 }
 
 header .logo:hover {
   background: rgba(255 255 255 / 0.2);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
 
 header .logo span {
   font-size: 1.75rem;
   letter-spacing: 0.04em;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 header .logo img {
   max-height: 44px;
-  filter: drop-shadow(0 0 2px rgba(0,0,0,0.4));
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
   transition: transform 0.3s ease;
 }
 
@@ -89,12 +126,11 @@ header .filtro select:hover {
   width: 100%;
 }
 
-/* ✅ Responsivo para celular */
 @media (max-width: 768px) {
   header {
-    flex-direction: column; /* coloca logo e filtro em coluna */
-    align-items: center; /* centraliza ambos */
-    gap: 10px; /* espaço entre logo e filtro */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     text-align: center;
   }
 
@@ -113,5 +149,12 @@ header .filtro select:hover {
 
   header .filtro select {
     font-size: 0.95rem;
+  }
+
+  .floating-btn {
+    top: unset;
+    bottom: 1rem;
+    right: unset;
+    left: 1rem;
   }
 }

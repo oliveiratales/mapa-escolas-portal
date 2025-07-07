@@ -1,7 +1,7 @@
 let markers = [];
 
 function initMap() {
-  const centroPortal = { lat: -23.4, lng: -46.8550 };
+  const centroPortal = { lat: -23.4, lng: -46.855 };
 
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 14,
@@ -176,3 +176,20 @@ function initMap() {
 }
 
 window.initMap = initMap;
+
+const toggleHeaderBtn = document.getElementById("toggle-header-btn");
+const header = document.querySelector("header");
+
+toggleHeaderBtn.addEventListener("click", () => {
+  header.classList.toggle("hide");
+
+  const icon = toggleHeaderBtn.querySelector("i");
+
+  if (header.classList.contains("hide")) {    
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  } else {
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  }
+});
