@@ -173,6 +173,11 @@ function initMap() {
   });
 
   filtrarMarcadores("todas");
+
+  // Tela de loading
+  setTimeout(() => {
+    document.getElementById("loading-screen").classList.add("hide");
+  }, 3000);
 }
 
 window.initMap = initMap;

@@ -150,6 +150,61 @@ header .filtro select:hover {
   width: 100%;
 }
 
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #15216d, #1a2a9c);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  color: white;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+#loading-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  position: relative;
+  transform: rotate(45deg);
+  margin-bottom: 1.5rem;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50% 50% 0 50%;
+  background: #ffffff;
+  -webkit-mask: radial-gradient(circle 10px at 50% 50%, #0000 94%, #000);
+  mask: radial-gradient(circle 10px at 50% 50%, #0000 94%, #000);
+}
+.loader:after {
+  animation: l6 1.2s infinite ease-in-out;
+  transform: perspective(300px) translateZ(0px);
+}
+@keyframes l6 {
+  to {
+    transform: perspective(300px) translateZ(150px);
+    opacity: 0;
+  }
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -181,7 +236,7 @@ header .filtro select:hover {
     right: unset;
     left: 1rem;
   }
-  
+
   .download-btn {
     top: unset;
     bottom: 5rem;
