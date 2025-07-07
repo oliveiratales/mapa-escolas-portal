@@ -1,10 +1,10 @@
 let markers = [];
 
 function initMap() {
-  const centroPortal = { lat: -23.4, lng: -46.86 };
+  const centroPortal = { lat: -23.4, lng: -46.8550 };
 
   const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 15,
+    zoom: 14,
     center: centroPortal,
     mapId: "DEMO_MAP_ID",
   });
