@@ -14,9 +14,10 @@ header {
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   display: flex;
   align-items: center;
-  justify-content: space-between; /* deixa logo à esquerda e filtro à direita */
+  justify-content: space-between; /* desktop: logo left, filtro right */
   font-size: 1.75rem;
   user-select: none;
+  flex-wrap: wrap; /* permite que quebre linha no mobile */
 }
 
 header .logo {
@@ -86,4 +87,31 @@ header .filtro select:hover {
 #map {
   height: calc(100vh - 70px);
   width: 100%;
+}
+
+/* ✅ Responsivo para celular */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* coloca logo e filtro em coluna */
+    align-items: center; /* centraliza ambos */
+    gap: 10px; /* espaço entre logo e filtro */
+    text-align: center;
+  }
+
+  header .logo {
+    justify-content: center;
+  }
+
+  header .logo span {
+    font-size: 1.5rem;
+  }
+
+  header .filtro {
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+
+  header .filtro select {
+    font-size: 0.95rem;
+  }
 }
