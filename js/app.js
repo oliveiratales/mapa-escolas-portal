@@ -185,11 +185,29 @@ toggleHeaderBtn.addEventListener("click", () => {
 
   const icon = toggleHeaderBtn.querySelector("i");
 
-  if (header.classList.contains("hide")) {    
+  if (header.classList.contains("hide")) {
     icon.classList.remove("fa-eye-slash");
     icon.classList.add("fa-eye");
   } else {
     icon.classList.remove("fa-eye");
     icon.classList.add("fa-eye-slash");
   }
+});
+
+const captureMapBtn = document.getElementById("capture-map-btn");
+
+captureMapBtn.addEventListener("click", () => {
+  const mapDiv = document.getElementById("map");
+
+  html2canvas(mapDiv, {
+    useCORS: true,
+    allowTaint: true,
+    logging: true,
+    scale: 2,
+  }).then((canvas) => {
+    const link = document.createElement("a");
+    link.download = "mapa-escolas-portal.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
 });
